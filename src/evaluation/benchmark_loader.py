@@ -4,6 +4,30 @@ from pathlib import Path
 
 import pandas as pd
 
+FREEFORM_COLUMNS = {
+    "id",
+    "domain",
+    "difficulty",
+    "question",
+    "answer",
+    "helpful_hint",
+    "misleading_hint",
+}
+
+MCQ_COLUMNS = {
+    "id",
+    "domain",
+    "difficulty",
+    "question",
+    "option_a",
+    "option_b",
+    "option_c",
+    "option_d",
+    "answer_key",
+    "helpful_hint",
+    "misleading_hint",
+}
+
 
 def load_benchmark(
     csv_path: str | Path,
@@ -20,21 +44,19 @@ def load_benchmark(
         ValueError: If required columns are missing.
     """
     benchmark = pd.read_csv(csv_path)
+    columns = set(benchmark.columns)
 
-    required_columns = {
-        "id",
-        "domain",
-        "difficulty",
-        "question",
-        "answer",
-        "helpful_hint",
-        "misleading_hint",
-    }
+    is_freeform = FREEFORM_COLUMNS.issubset(columns)
+    is_mcq = MCQ_COLUMNS.issubset(columns)
 
-    if not required_columns.issubset(benchmark.columns):
+    if not (is_freeform or is_mcq):
         raise ValueError(
-            "CSV must contain id, domain, difficulty, question, "
-            "answer, helpful_hint, and misleading_hint columns."
+            "CSV must be either a free-form benchmark with columns "
+            "id, domain, difficulty, question, answer, helpful_hint, "
+            "and misleading_hint, or an MCQ benchmark with columns "
+            "id, domain, difficulty, question, option_a, option_b, "
+            "option_c, option_d, answer_key, helpful_hint, "
+            "and misleading_hint."
         )
 
     return benchmark

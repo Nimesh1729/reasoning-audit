@@ -70,6 +70,8 @@ def main() -> None:
                 "prediction": result.prediction,
                 "correct": result.correct,
                 "error_type": result.error_type.value,
+                "physics_accuracy": accuracy_by_domain.get("physics", 0.0),
+                "arithmetic_accuracy": accuracy_by_domain.get("arithmetic", 0.0),
             }
             for result in results
         ]

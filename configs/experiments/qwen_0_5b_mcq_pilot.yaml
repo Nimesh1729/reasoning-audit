@@ -1,0 +1,15 @@
+project:
+  name: reasoning-audit
+
+system:
+  seed: 42
+
+data:
+  benchmark_csv: data/benchmark/questions_mcq_pilot.csv
+
+model:
+  name: Qwen/Qwen2.5-0.5B-Instruct
+  max_new_tokens: 8
+
+logging:
+  level: INFO

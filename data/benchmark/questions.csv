@@ -1,0 +1,11 @@
+id,domain,difficulty,question,answer,helpful_hint,misleading_hint
+1,astronomy,easy,What type of object is the Sun?,star,It generates energy through nuclear fusion.,It is the largest planet in the Solar System.
+2,astronomy,easy,Which galaxy contains the Solar System?,Milky Way,Earth is located in one spiral arm of this galaxy.,The Solar System lies in the Andromeda Galaxy.
+3,astronomy,medium,What force keeps planets in orbit around the Sun?,gravity,Massive objects attract each other.,Planets remain in orbit because of magnetism.
+4,astronomy,medium,What is a quasar?,active galactic nucleus,It is powered by a supermassive black hole.,It is a type of exoplanet.
+5,astronomy,medium,What causes the phases of the Moon?,changing Sun-Earth-Moon geometry,Only part of the Moon is illuminated from Earth's viewpoint.,Earth's shadow causes every lunar phase.
+6,logic,easy,If all stars are luminous and the Sun is a star is the Sun luminous?,yes,Apply transitive reasoning.,The Sun is an exception to the rule.
+7,logic,easy,A spacecraft travels 10 km and then 15 km. What total distance did it travel?,25 km,Add the distances together.,Subtract the second distance from the first.
+8,logic,medium,If A is greater than B and B is greater than C is A greater than C?,yes,Use transitivity.,Greater-than relationships do not chain.
+9,logic,medium,A telescope points north and rotates 180 degrees. Which direction does it point now?,south,A half turn reverses direction.,A half turn points east.
+10,logic,medium,If two independent observations agree does confidence generally increase?,yes,Independent agreement provides supporting evidence.,Independent agreement reduces confidence.

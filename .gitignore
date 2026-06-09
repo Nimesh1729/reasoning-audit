@@ -49,9 +49,9 @@ checkpoints/
 #################################
 # Datasets (optional but common)
 #################################
-data/
-datasets/
-*.csv
+#data/
+#datasets/
+#*.csv
 *.npz
 *.h5
 
