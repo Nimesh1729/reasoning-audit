@@ -1,0 +1,15 @@
+project:
+  name: reasoning-audit
+
+system:
+  seed: 42
+
+data:
+  benchmark_csv: data/benchmark/test.csv
+
+model:
+  name: google/flan-t5-base
+  max_new_tokens: 8
+
+logging:
+  level: INFO

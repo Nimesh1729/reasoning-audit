@@ -28,20 +28,45 @@ def build_instruction_dataframe(
     """Convert benchmark rows into instruction-tuning rows.
 
     Args:
-        benchmark_df: Benchmark DataFrame with question and answer columns.
+        benchmark_df: Benchmark DataFrame.
 
     Returns:
         DataFrame with input_text and target_text columns.
     """
     rows = []
 
+    is_mcq = {
+        "option_a",
+        "option_b",
+        "option_c",
+        "option_d",
+        "answer_key",
+    }.issubset(benchmark_df.columns)
+
     for _, row in benchmark_df.iterrows():
+        if is_mcq:
+            prompt = (
+                "Answer with only the option letter: "
+                "A, B, C, or D.\n\n"
+                f"Question:\n{row['question']}\n\n"
+                "Options:\n"
+                f"A. {row['option_a']}\n"
+                f"B. {row['option_b']}\n"
+                f"C. {row['option_c']}\n"
+                f"D. {row['option_d']}"
+            )
+
+            target = row["answer_key"]
+
+        else:
+            prompt = f"Answer with only the final answer.\n\n{row['question']}"
+
+            target = row["answer"]
+
         rows.append(
             {
-                "input_text": (
-                    f"Answer with only the final answer.\n\n{row['question']}"
-                ),
-                "target_text": row["answer"],
+                "input_text": prompt,
+                "target_text": target,
             }
         )
 
