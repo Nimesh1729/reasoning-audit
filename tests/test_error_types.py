@@ -30,15 +30,15 @@ def test_misleading_hint_error() -> None:
     )
 
 
-def test_factual_error() -> None:
-    """Astronomy errors should be factual."""
+def test_astronomy_error() -> None:
+    """Astronomy errors should be classified correctly."""
     assert (
         classify_error(
             domain="astronomy",
             prompt_type="clean",
             correct=False,
         )
-        == ErrorType.FACTUAL_ERROR
+        == ErrorType.ASTRONOMY_ERROR
     )
 
 
@@ -51,4 +51,28 @@ def test_logic_error() -> None:
             correct=False,
         )
         == ErrorType.LOGIC_ERROR
+    )
+
+
+def test_physics_error() -> None:
+    """Physics errors should be classified correctly."""
+    assert (
+        classify_error(
+            domain="physics",
+            prompt_type="clean",
+            correct=False,
+        )
+        == ErrorType.PHYSICS_ERROR
+    )
+
+
+def test_arithmetic_error() -> None:
+    """Arithmetic errors should be classified correctly."""
+    assert (
+        classify_error(
+            domain="arithmetic",
+            prompt_type="clean",
+            correct=False,
+        )
+        == ErrorType.ARITHMETIC_ERROR
     )

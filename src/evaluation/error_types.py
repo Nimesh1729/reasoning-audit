@@ -8,17 +8,14 @@ class ErrorType(str, Enum):
 
     NONE = "none"
     MISLEADING_HINT = "misleading_hint"
-    FACTUAL_ERROR = "factual_error"
+    ASTRONOMY_ERROR = "astronomy_error"
     LOGIC_ERROR = "logic_error"
+    PHYSICS_ERROR = "physics_error"
+    ARITHMETIC_ERROR = "arithmetic_error"
     UNKNOWN = "unknown"
 
 
-def classify_error(
-    *,
-    domain: str,
-    prompt_type: str,
-    correct: bool,
-) -> ErrorType:
+def classify_error(*, domain: str, prompt_type: str, correct: bool) -> ErrorType:
     """Classify an evaluation error.
 
     Args:
@@ -36,9 +33,15 @@ def classify_error(
         return ErrorType.MISLEADING_HINT
 
     if domain == "astronomy":
-        return ErrorType.FACTUAL_ERROR
+        return ErrorType.ASTRONOMY_ERROR
 
     if domain == "logic":
         return ErrorType.LOGIC_ERROR
+
+    if domain == "physics":
+        return ErrorType.PHYSICS_ERROR
+
+    if domain == "arithmetic":
+        return ErrorType.ARITHMETIC_ERROR
 
     return ErrorType.UNKNOWN
